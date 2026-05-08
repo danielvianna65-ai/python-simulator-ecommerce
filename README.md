@@ -155,7 +155,6 @@ python-simulator-ecommerce/
 │   └── scheduler.py
 │
 ├── run.py
-├── requirements.txt
 └── README.md
 ```
 
