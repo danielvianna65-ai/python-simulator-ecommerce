@@ -2,7 +2,7 @@
 
 Simulador transacional de ecommerce desenvolvido em Python para geração contínua de dados operacionais em banco relacional MySQL.
 
-O projeto foi criado para simular um ambiente real de ecommerce, reproduzindo operações de negócio como criação de pedidos, pagamentos, movimentação de estoque e reabastecimento de produtos.
+O projeto foi criado para reproduzir operações típicas de um ambiente de ecommerce, simulando fluxo de pedidos, pagamentos, movimentação de estoque e processos de reabastecimento.
 
 Os dados gerados são utilizados como origem operacional para pipelines de Data Engineering baseados em arquitetura Medallion e Lakehouse.
 
@@ -10,14 +10,15 @@ Os dados gerados são utilizados como origem operacional para pipelines de Data 
 
 # Objetivo do Projeto
 
-O principal objetivo do projeto é fornecer uma fonte de dados transacionais para estudos de:
+O principal objetivo do projeto é fornecer uma fonte de dados transacionais para estudos e implementação de:
 
 - Engenharia de Dados
 - Arquitetura Medallion
+- Arquitetura Lakehouse
 - Processamento distribuído
 - Ingestão incremental
 - Modelagem dimensional
-- Data Lakes e Lakehouses
+- Data Lakes
 - Pipelines analíticos
 
 O simulador reproduz cenários próximos de um ambiente OLTP real, permitindo alimentar pipelines analíticos com dados continuamente gerados.
@@ -32,7 +33,7 @@ O simulador reproduz cenários próximos de um ambiente OLTP real, permitindo al
 - Reabastecimento de produtos
 - Agendamento automatizado de eventos
 - Persistência em banco relacional MySQL
-- Geração contínua de dados para pipelines analíticos
+- Geração contínua de dados operacionais para pipelines analíticos
 
 ---
 
@@ -42,7 +43,7 @@ Diagrama relacional utilizado para representar as operações transacionais do e
 
 ![Modelo Relacional](docs/images/modelo_relacional.png)
 
-O modelo relacional foi estruturado para representar entidades típicas de ecommerce:
+O modelo relacional foi estruturado com entidades típicas de ecommerce:
 
 - Clientes
 - Produtos
@@ -71,3 +72,78 @@ A granularidade transacional do modelo está centrada na entidade `itens_pedido`
 
 ```text
 Cliente → Pedido → Item Pedido → Pagamento → Atualização Estoque → Reabastecimento
+```
+
+---
+
+# Integração com Data Engineering
+
+Os dados gerados pelo simulador são utilizados como origem operacional para pipelines analíticos desenvolvidos com:
+
+- Apache Spark
+- Apache Airflow
+- Delta Lake
+- HDFS
+
+Os pipelines seguem arquitetura Medallion:
+
+```text
+Landing → Raw → Trusted → Refined
+```
+
+---
+
+# Fluxo Arquitetural
+
+```text
+Python Simulator
+       ↓
+MySQL (OLTP)
+       ↓
+Landing
+       ↓
+Spark Pipeline
+       ↓
+Delta Lake / Medallion
+```
+
+---
+
+# Tecnologias Utilizadas
+
+- Python
+- MySQL
+- SQL
+- Faker
+- Modelagem Relacional
+
+---
+
+# Estrutura do Projeto
+
+```text
+.
+├── docs
+│   └── images
+│       └── modelo_relacional.png
+├── src
+│   ├── data_generators.py
+│   ├── db.py
+│   ├── order_flow.py
+│   ├── restock.py
+│   └── scheduler.py
+├── run.py
+├── .gitignore
+└── README.md
+```
+
+---
+
+# Próximas Evoluções
+
+- Integração com streaming de eventos
+- Simulação em tempo real
+- APIs REST
+- Observabilidade e métricas operacionais
+- Integração com Apache Kafka
+- Geração distribuída de eventos
