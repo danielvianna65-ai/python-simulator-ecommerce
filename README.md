@@ -232,7 +232,7 @@ O simulador pode ser utilizado para:
 * estudos de modelagem dimensional
 * simulação operacional de ecommerce
 * desenvolvimento de pipelines Spark/Airflow
-* testes de ingestão batch
+* testes de ingestão 
 
 ---
 
@@ -255,14 +255,10 @@ Os dados gerados podem alimentar:
 # Melhorias Futuras
 
 * geração temporal avançada
-* sazonalidade operacional
 * múltiplos workers concorrentes
 * simulação de Black Friday
 * eventos de cancelamento
-* exportação para Parquet
 * integração com Kafka
-* parametrização via variáveis de ambiente
-* connection pooling
 
 ---
 
