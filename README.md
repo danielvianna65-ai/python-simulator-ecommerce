@@ -175,7 +175,7 @@ python-simulator-ecommerce/
 ## 1. Clonar repositório
 
 ```bash
-git clone <repo>
+git clone https://github.com/danielvianna65-ai/python-simulator-ecommerce.git
 cd python-simulator-ecommerce
 ```
 
