@@ -1,7 +1,7 @@
 from src.db import get_connection
 
-ESTOQUE_MINIMO = 10
-QTDE_REPOSICAO = 50
+ESTOQUE_MINIMO = 20
+QTDE_REPOSICAO = 500
 
 def repor_estoque_se_necessario():
     conn = get_connection()
@@ -21,8 +21,7 @@ def repor_estoque_se_necessario():
         for p in produtos:
             cursor.execute("""
                 UPDATE estoque
-                SET quantidade_disponivel = quantidade_disponivel + %s,
-                    data_atualizacao = CURRENT_TIMESTAMP
+                SET quantidade_disponivel = quantidade_disponivel + %s
                 WHERE id_produto = %s
             """, (QTDE_REPOSICAO, p["id_produto"]))
 

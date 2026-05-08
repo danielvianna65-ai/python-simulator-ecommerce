@@ -103,21 +103,30 @@ def criar_pedido():
         forma = escolher_forma_pagamento()
         status_final = decidir_status_final(forma)
 
+        mapping = {
+            "PAGO": "CONFIRMADO",
+            "EM_PROCESSAMENTO": "PENDENTE",
+            "CANCELADO": "CANCELADO"
+        }
+
+        if status_final not in mapping:
+            raise ValueError(f"Status inesperado: {status_final}")
+
+        status = mapping[status_final]
+
         cursor.execute("""
-            INSERT INTO pagamentos (
-                id_pedido,
-                forma_pagamento,
-                status_pagamento,
-                data_pagamento,
-                valor_pago
-            )
-            VALUES (%s, %s, %s, NOW(), %s)
-        """, (
-            id_pedido,
-            forma,
-            "CONFIRMADO" if status_final == "PAGO" else "PENDENTE",
-            valor_total
-        ))
+                       INSERT INTO pagamentos (id_pedido,
+                                               forma_pagamento,
+                                               status_pagamento,
+                                               data_pagamento,
+                                               valor_pago)
+                       VALUES (%s, %s, %s, NOW(), %s)
+                       """, (
+                           id_pedido,
+                           forma,
+                           status,
+                           valor_total
+                       ))
 
         # =========================
         # Status final (TRIGGERS)
@@ -131,7 +140,8 @@ def criar_pedido():
         conn.commit()
         print(
             f"Pedido {id_pedido} criado com "
-            f"{qtd_produtos} produtos diferentes → {status_final}"
+            f"{qtd_produtos} produtos diferentes → {status_final} "
+            f"valor total R$:{valor_total}"
         )
 
     except Exception as e:
