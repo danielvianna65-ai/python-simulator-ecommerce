@@ -1,5 +1,4 @@
 import random
-from datetime import datetime
 
 FORMAS_PAGAMENTO = ["PIX", "CARTAO_CREDITO", "BOLETO"]
 
