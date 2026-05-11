@@ -236,32 +236,6 @@ O simulador pode ser utilizado para:
 
 ---
 
-# Integração com Engenharia de Dados
-
-O projeto foi desenvolvido para servir como origem operacional de pipelines analíticos.
-
-Os dados gerados podem alimentar:
-
-* pipelines Medallion
-* camadas Landing / Raw / Trusted / Refined
-* processos incrementais
-* cargas Spark
-* pipelines orquestrados com Airflow
-* data lakes
-* modelos dimensionais
-
----
-
-# Melhorias Futuras
-
-* geração temporal avançada
-* múltiplos workers concorrentes
-* simulação de Black Friday
-* eventos de cancelamento
-* integração com Kafka
-
----
-
 # Objetivo do Projeto
 
 O objetivo do projeto é simular um sistema operacional simplificado de ecommerce capaz de gerar dados transacionais contínuos e coerentes para estudos de Engenharia de Dados, pipelines analíticos e modelagem de dados.
