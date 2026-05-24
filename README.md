@@ -206,10 +206,14 @@ Criar banco:
 CREATE DATABASE ecommerce;
 ```
 
-Ajustar credenciais no arquivo:
+Configurar as credenciais por variáveis de ambiente:
 
-```text
-src/db.py
+```bash
+export MYSQL_HOST=localhost
+export MYSQL_PORT=3306
+export MYSQL_DATABASE=ecommerce
+export MYSQL_USER=admin
+export MYSQL_PASSWORD='sua_senha'
 ```
 
 ---
