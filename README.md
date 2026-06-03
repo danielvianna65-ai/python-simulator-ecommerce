@@ -10,7 +10,7 @@ O projeto foi criado para simular um ambiente real de ecommerce, reproduzindo op
 * reabastecimento automático
 * atualização de status transacionais
 
-Os dados gerados servem como origem operacional para pipelines de Data Engineering e análises analíticas.
+Os dados gerados servem como origem operacional para pipelines de Engenharia de Dados e análises de dados.
 
 ---
 
@@ -230,16 +230,17 @@ python run.py
 
 O simulador pode ser utilizado para:
 
-* testes de pipelines de dados
-* geração de massa transacional
-* validação de cargas incrementais
-* estudos de modelagem dimensional
-* simulação operacional de ecommerce
-* desenvolvimento de pipelines Spark/Airflow
-* testes de ingestão 
+* Testes de pipelines de dados batch e incrementais
+* Geração de massa de dados transacionais
+* Validação de cargas incrementais e estratégias de deduplicação
+* Estudos de modelagem dimensional e processos analíticos
+* Simulação operacional de ambientes de e-commerce
+* Desenvolvimento e orquestração de pipelines com Apache Spark e Apache Airflow
+* Testes de ingestão de dados em arquiteturas Data Lake e Lakehouse
+* Validação de fluxos ETL/ELT em ambientes distribuídos
 
 ---
 
 # Objetivo do Projeto
 
-O objetivo do projeto é simular um sistema operacional simplificado de ecommerce capaz de gerar dados transacionais contínuos e coerentes para estudos de Engenharia de Dados, pipelines analíticos e modelagem de dados.
+O objetivo do projeto é simular um sistema operacional simplificado de e-commerce, capaz de gerar dados transacionais contínuos e consistentes para estudos de Engenharia de Dados, desenvolvimento de pipelines analíticos e modelagem de dados.
